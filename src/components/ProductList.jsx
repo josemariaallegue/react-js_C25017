@@ -8,7 +8,6 @@ const DEAFULT_CATEGORY = null;
 export default function ProductList(props) {
   const { category = DEAFULT_CATEGORY } = props;
   const [products, setProducts] = useState([]);
-  console.error(category);
 
   useEffect(() => {
     const loadProducts = async () => {

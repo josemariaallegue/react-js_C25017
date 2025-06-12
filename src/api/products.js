@@ -17,3 +17,17 @@ export const fetchProducts = async (category) => {
     return [];
   }
 };
+
+export const fetchProduct = async (id) => {
+  try {
+    console.info(id);
+    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    if (!res.ok) throw new Error(`Error al buscar el proudcto con id ${id}`);
+
+    const data = await res.json();
+    return data;
+  } catch (error) {
+    console.error(`Error al buscar el proudcto con id ${id}`, error);
+    return [];
+  }
+};
