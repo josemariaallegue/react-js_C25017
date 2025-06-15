@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import StarRating from "./StarRating";
 
 const DEFAULT_PRODUCT = {
   id: 1,
@@ -19,9 +20,10 @@ export default function ProductInfo(props) {
       <div className="product-info__description">
         <h2 className="product-info__description__title">{product.title}</h2>
         <p className="product-info__description__rating">
-          {product.rating.rate} ({product.rating.count})
+          {product.rating.rate} <StarRating value={product.rating.rate} /> (
+          {product.rating.count})
         </p>
-        <p className="product-info__description__price">{product.price}</p>
+        <p className="product-info__description__price">${product.price}</p>
         <p className="product-info__description__body">{product.description}</p>
       </div>
     </div>

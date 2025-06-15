@@ -5,6 +5,7 @@
   --background-button-blue-2: #1d4ed8;
   --background-button-blue-3: #3b82f6;
   --text-white: hsl(216, 8%, 88%);
+  --text-gray: hsla(0, 0%, 0%, 0.5);
   --boder-gray: hsl(0, 0%, 80%);
 }
 
@@ -124,6 +125,48 @@ main {
 .card__button:hover {
   cursor: pointer;
   opacity: 0.8;
+}
+
+.product-info {
+  min-height: 400px;
+  width: 50%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 20px 0 0 0;
+  padding: 20px;
+  gap: 25px;
+  border: 1px solid var(--boder-gray);
+  border-radius: 5px;
+}
+
+.product-info__img-container {
+  width: 50%;
+  & img {
+    max-height: 400px;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.product-info__description__rating {
+  color: var(--text-gray);
+  word-spacing: 0.3rem;
+}
+
+.product-info__description {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.product-info__description__price {
+  font-size: 2rem;
+}
+
+.product-info__description__body {
+  line-height: 1.5rem;
 }
 
 .button--basic {

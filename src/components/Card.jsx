@@ -1,4 +1,5 @@
 import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 
 const DEFAULT_PRODUCT = {
@@ -13,7 +14,9 @@ const DEFAULT_PRODUCT = {
 export default function Card(props) {
   const { product = DEFAULT_PRODUCT } = props;
 
-  function handleClick() {
+  function handleClick(e) {
+    e.preventDefault();
+    e.stopPropagation();
     Swal.fire({
       title: "¡Agregado!",
       text: `${product.title} agregado al carrito.`,
@@ -22,22 +25,23 @@ export default function Card(props) {
   }
 
   return (
-    <div className="card">
-      <div className="card__img-container">
-        <img src={product.image} alt="product image" className="card__img" />
+    <Link to={`/products/${product.id}`}>
+      <div className="card">
+        <div className="card__img-container">
+          <img src={product.image} alt="product image" className="card__img" />
+        </div>
+        <div className="card__text-container">
+          <h3 className="card__title">{product.title}</h3>
+          <p className="card__price">${product.price}</p>
+          <button
+            className="card__button button--basic button--blue"
+            onClick={handleClick}
+          >
+            Agregar al carrito
+          </button>
+        </div>
       </div>
-      <div className="card__text-container">
-        <h3 className="card__title">{product.title}</h3>
-        {/* <p>{product.description} </p> */}
-        <p className="card__price">${product.price}</p>
-        <button
-          className="card__button button--basic button--blue"
-          onClick={handleClick}
-        >
-          Agregar al carrito
-        </button>
-      </div>
-    </div>
+    </Link>
   );
 }
 
