@@ -2,11 +2,14 @@
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   --background-black: hsl(210, 11%, 15%);
   --background-button-blue-1: hsl(221, 83%, 53%);
-  --background-button-blue-2: #1d4ed8;
-  --background-button-blue-3: #3b82f6;
+  --background-button-blue-2: hsl(224, 76%, 48%);
+  --background-button-blue-3: hsl(217, 91%, 60%);
+  --background-button-red-1: hsl(6, 83%, 95%);
   --text-white: hsl(216, 8%, 88%);
   --text-gray: hsla(0, 0%, 0%, 0.5);
+  --text-red: hsl(0, 73%, 41%);
   --boder-gray: hsl(0, 0%, 80%);
+  --border-red: hsl(0, 73%, 41%);
 }
 
 * {
@@ -167,6 +170,55 @@ main {
 
 .product-info__description__body {
   line-height: 1.5rem;
+}
+
+.login__container {
+  min-height: 400px;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid var(--boder-gray);
+  border-radius: 5px;
+}
+
+.login__form {
+  /* height: 300px; */
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.login__form-error {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--background-button-red-1);
+  color: var(--text-red);
+  border: 1px solid var(--border-red);
+  border-radius: 5px;
+  margin-bottom: 10px;
+}
+
+.login__form-label {
+  height: 10px;
+  margin-bottom: 5px;
+}
+
+.login__form-input {
+  height: 40px;
+  margin-bottom: 20px;
+  border: 1px solid var(--boder-gray);
+  border-radius: 5px;
+  padding-left: 5px;
+}
+
+.login__form-btn-submit {
+  height: 40px;
 }
 
 .button--basic {
