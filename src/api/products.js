@@ -5,8 +5,6 @@ export const fetchProducts = async (category) => {
       url = `https://fakestoreapi.com/products/category/${category}`;
     }
 
-    console.info(category, url);
-
     const res = await fetch(url);
     if (!res.ok) throw new Error("Error al buscar los productos");
 
@@ -20,7 +18,6 @@ export const fetchProducts = async (category) => {
 
 export const fetchProduct = async (id) => {
   try {
-    console.info(id);
     const res = await fetch(`https://fakestoreapi.com/products/${id}`);
     if (!res.ok) throw new Error(`Error al buscar el proudcto con id ${id}`);
 
