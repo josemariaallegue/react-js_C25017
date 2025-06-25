@@ -1,29 +1,29 @@
 import { createContext, useContext, useState } from "react";
 
-const CardContext = createContext(null);
+const CartContext = createContext(null);
 
-export function CardProvider({ children }) {
-  const [card, setCard] = useState([]);
+export function CartProvider({ children }) {
+  const [cart, setCart] = useState([]);
 
   function addItem(item) {
-    setCard((prevCard) => [...prevCard, item]);
+    setCart((prevCart) => [...prevCart, item]);
   }
 
   function removeItem(id) {
-    setCard((prevCard) => prevCard.filter((item) => item.id !== id));
+    setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   }
 
-  function emptyCard() {
-    setCard([]);
+  function emptyCart() {
+    setCart([]);
   }
 
   return (
-    <CardContext.Provider value={{ card, addItem, removeItem, emptyCard }}>
+    <CartContext.Provider value={{ cart, addItem, removeItem, emptyCart }}>
       {children}
-    </CardContext.Provider>
+    </CartContext.Provider>
   );
 }
 
-export function useCard() {
-  return useContext(CardContext);
+export function useCart() {
+  return useContext(CartContext);
 }
