@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import { useCart, useAuth } from "../context/index";
 
 const DEFAULT_PRODUCT = {
   id: 1,
@@ -13,15 +14,27 @@ const DEFAULT_PRODUCT = {
 
 export default function Card(props) {
   const { product = DEFAULT_PRODUCT } = props;
+  const { token } = useAuth();
+  const { addItem } = useCart();
 
   function handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    Swal.fire({
-      title: "¡Agregado!",
-      text: `${product.title} agregado al carrito.`,
-      confirmButtonText: "Ok",
-    });
+    console.log(token);
+    if (token) {
+      addItem(product);
+      Swal.fire({
+        title: "¡Agregado!",
+        text: `${product.title} agregado al carrito.`,
+        confirmButtonText: "Ok",
+      });
+    } else {
+      Swal.fire({
+        title: "¡Error al agregar el producto!",
+        text: `Por favor ingrese a su cuenta.`,
+        confirmButtonText: "Ok",
+      });
+    }
   }
 
   return (

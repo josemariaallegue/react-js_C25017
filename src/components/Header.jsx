@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
-import { useAuth } from "../context/AuthContext";
+import { useAuth, useCart } from "../context/index";
 
 export default function Header() {
   const { token } = useAuth();
+  const { cart } = useCart();
 
   return (
     <header>
@@ -18,9 +19,17 @@ export default function Header() {
         <Link to={"/electronics"}>Electronica</Link>
         {!token && <Link to={"/login"}>Login</Link>}
         <Link to={"/admin"}>Administración</Link>
-        <Link to={"/cart"}>
-          <i class="bi bi-cart"></i>
-        </Link>
+        <div className="header__cart-container">
+          <Link to={"/cart"}>
+            <i class="bi bi-cart">
+              {cart.length > 0 && (
+                <span className="cart-container__item-count">
+                  {cart.length}{" "}
+                </span>
+              )}
+            </i>
+          </Link>
+        </div>
       </nav>
     </header>
   );
