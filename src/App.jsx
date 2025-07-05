@@ -45,5 +45,4 @@ export default function App() {
       </CartProvider>
     </AuthProvider>
   );
-  bbbbnn;
 }
