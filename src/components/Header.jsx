@@ -3,7 +3,7 @@ import { useAuth, useCart } from "../context/index";
 
 export default function Header() {
   const { token } = useAuth();
-  const { cart } = useCart();
+  const { getTotalItems } = useCart();
 
   return (
     <header>
@@ -22,9 +22,9 @@ export default function Header() {
         <div className="header__cart-container">
           <Link to={"/cart"}>
             <i class="bi bi-cart">
-              {cart.length > 0 && (
+              {getTotalItems() > 0 && (
                 <span className="cart-container__item-count">
-                  {cart.length}{" "}
+                  {getTotalItems()}{" "}
                 </span>
               )}
             </i>
