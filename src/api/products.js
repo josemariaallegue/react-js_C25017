@@ -1,14 +1,15 @@
 export const fetchProducts = async (category) => {
   try {
-    let url = "https://fakestoreapi.com/products";
-    if (category) {
-      url = `https://fakestoreapi.com/products/category/${category}`;
-    }
+    let url = "https://686975cd2af1d945cea1f02a.mockapi.io/products";
 
     const res = await fetch(url);
     if (!res.ok) throw new Error("Error al buscar los productos");
 
-    const data = await res.json();
+    let data = await res.json();
+
+    if (category) {
+      data = data.filter((proudct) => proudct.category === category);
+    }
     return data;
   } catch (error) {
     console.error("Error al buscar los productos", error);
@@ -18,7 +19,9 @@ export const fetchProducts = async (category) => {
 
 export const fetchProduct = async (id) => {
   try {
-    const res = await fetch(`https://fakestoreapi.com/products/${id}`);
+    const res = await fetch(
+      `https://686975cd2af1d945cea1f02a.mockapi.io/products/${id}`
+    );
     if (!res.ok) throw new Error(`Error al buscar el proudcto con id ${id}`);
 
     const data = await res.json();
