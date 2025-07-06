@@ -8,6 +8,7 @@ const DEAFULT_CATEGORY = null;
 export default function ProductList(props) {
   const { category = DEAFULT_CATEGORY } = props;
   const [products, setProducts] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const loadProducts = async () => {
@@ -16,8 +17,16 @@ export default function ProductList(props) {
     };
 
     loadProducts();
+    setIsLoading(false);
   }, []);
 
+  if (isLoading) {
+    return (
+      <div>
+        <p>Cargando productos...</p>
+      </div>
+    );
+  }
   return (
     <div className="main__cards-container">
       {products.map((product) => (
