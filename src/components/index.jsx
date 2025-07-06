@@ -6,3 +6,4 @@ export { default as ProductInfo } from "./ProductInfo";
 export { default as ProductList } from "./ProductList";
 export { default as ProtectedRoute } from "./ProtectedRoute";
 export { default as StarRating } from "./StarRating";
+export { default as CartList } from "./CartList";

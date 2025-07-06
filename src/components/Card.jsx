@@ -20,7 +20,6 @@ export default function Card(props) {
   function handleClick(e) {
     e.preventDefault();
     e.stopPropagation();
-    console.log(token);
     if (token) {
       addItem(product);
       Swal.fire({

@@ -21,7 +21,7 @@ export default function Header() {
         <Link to={"/admin"}>Administración</Link>
         <div className="header__cart-container">
           <Link to={"/cart"}>
-            <i class="bi bi-cart">
+            <i className="bi bi-cart">
               {getTotalItems() > 0 && (
                 <span className="cart-container__item-count">
                   {getTotalItems()}{" "}
