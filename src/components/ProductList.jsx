@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
-import { fetchProducts } from "../api/products";
+// import { fetchProducts } from "../api/products";
+import { useProducts } from "../context";
 import Card from "./Card";
 import PropTypes from "prop-types";
 
@@ -7,18 +8,12 @@ const DEAFULT_CATEGORY = null;
 
 export default function ProductList(props) {
   const { category = DEAFULT_CATEGORY } = props;
-  const [products, setProducts] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadProducts = async () => {
-      const data = await fetchProducts(category);
-      setProducts(data);
-    };
-
-    loadProducts();
-    setIsLoading(false);
-  }, []);
+  const { products, isLoading } = useProducts();
+  const productsFiltered = category
+    ? products.filter((product) => {
+        return product.category === category;
+      })
+    : products;
 
   if (isLoading) {
     return (
@@ -29,7 +24,7 @@ export default function ProductList(props) {
   }
   return (
     <div className="main__cards-container">
-      {products.map((product) => (
+      {productsFiltered.map((product) => (
         <Card key={product.id} product={product} />
       ))}
     </div>

@@ -1,24 +1,48 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { fetchProduct } from "../api/products";
+import { useProducts } from "../context";
 import ProductInfo from "../components/ProductInfo";
 
 export default function ProductDetail() {
-  const [product, setProduct] = useState();
+  const { products, fetchProduct } = useProducts();
   const { id } = useParams();
+  const [product, setProduct] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const loadProducts = async () => {
-      const data = await fetchProduct(id);
-      setProduct(data);
-    };
-    loadProducts();
-  }, []);
+    const localProduct = products.find((item) => item.id === id);
+
+    if (localProduct) {
+      setProduct(localProduct);
+      setIsLoading(false);
+    } else {
+      fetchProduct(id).then((data) => {
+        setProduct(data);
+        setIsLoading(false);
+      });
+    }
+  }, [id, products, fetchProduct]);
+
+  if (isLoading) {
+    return (
+      <div>
+        <p>Cargando producto...</p>
+      </div>
+    );
+  }
+
+  if (!product) {
+    return (
+      <div>
+        <p>Producto no encontrado.</p>
+      </div>
+    );
+  }
 
   return (
     <main>
       <h1>Detalle de producto</h1>
-      <ProductInfo key={id} product={product} />
+      <ProductInfo product={product} />
     </main>
   );
 }
