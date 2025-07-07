@@ -6,7 +6,7 @@ export default function StarRating({ value, max = 5 }) {
   const emptyStar = "☆";
 
   return (
-    <div
+    <span
       style={{
         color: "#f5c518",
         fontSize: "1.2rem",
@@ -16,6 +16,6 @@ export default function StarRating({ value, max = 5 }) {
     >
       {fullStar.repeat(fullStars)}
       {emptyStar.repeat(emptyStars)}
-    </div>
+    </span>
   );
 }
