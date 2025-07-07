@@ -21,7 +21,7 @@ export default function ProductDetail() {
         setIsLoading(false);
       });
     }
-  }, [id, products, fetchProduct]);
+  }, [products]);
 
   if (isLoading) {
     return (
