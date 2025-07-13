@@ -31,7 +31,7 @@ export default function Admin() {
       <ProductForm
         initialData={initialData}
         onSubmit={handleSubmit}
-        mode={!initialData ? "create" : "edit"}
+        mode={mode}
       />
       <ProductTable onEdit={handleEdit} />
     </main>
