@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
-import Swal from "sweetalert2";
+import { toast } from "react-toastify";
 import { useCart, useAuth } from "../context/index";
 
 const DEFAULT_PRODUCT = {
@@ -22,17 +22,9 @@ export default function Card(props) {
     e.stopPropagation();
     if (token) {
       addItem(product);
-      Swal.fire({
-        title: "¡Agregado!",
-        text: `${product.title} agregado al carrito.`,
-        confirmButtonText: "Ok",
-      });
+      toast.success("Producto agregado.");
     } else {
-      Swal.fire({
-        title: "¡Error al agregar el producto!",
-        text: `Por favor ingrese a su cuenta.`,
-        confirmButtonText: "Ok",
-      });
+      toast.error("Error al agregar el producto");
     }
   }
 

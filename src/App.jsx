@@ -10,6 +10,7 @@ import {
   Cart,
 } from "./pages/index";
 import { AuthProvider, CartProvider, ProductsProvider } from "./context/index";
+import { ToastContainer } from "react-toastify";
 
 export default function App() {
   return (
@@ -42,6 +43,13 @@ export default function App() {
               <Route path="/*" element={<NotFound />} />
             </Routes>
             <Footer />
+            <ToastContainer
+              position="top-right" // esquina superior derecha
+              autoClose={3000} // 3 s y desaparece
+              closeOnClick
+              pauseOnHover
+              theme="colored" // o "light" / "dark"
+            />
           </BrowserRouter>
         </CartProvider>
       </ProductsProvider>

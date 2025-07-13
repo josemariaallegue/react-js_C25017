@@ -1,6 +1,7 @@
 import ProductForm from "../components/ProductForm";
 import ProductTable from "../components/ProductTable";
 import { useState } from "react";
+import { toast } from "react-toastify";
 
 export default function Admin() {
   const [initialData, setInitialData] = useState(null);
@@ -8,9 +9,9 @@ export default function Admin() {
 
   function handleSubmit() {
     if (!initialData) {
-      alert("creado");
+      toast.success("Creado");
     } else {
-      alert("modificado");
+      toast.warn("Modificado");
     }
     setInitialData(null);
     setMode("create");
