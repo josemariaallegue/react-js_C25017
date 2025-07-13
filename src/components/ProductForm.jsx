@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import PropTypes from "prop-types";
 
-export default function ProductForm() {
-  const [form, setForm] = useState({ name: "", price: "", description: "" });
+export default function ProductForm(props) {
+  const { initialData, onSubmit, mode } = props;
+  const [form, setForm] = useState(() => ({
+    title: initialData?.title || "",
+    price: initialData?.price || "",
+    description: initialData?.description || "",
+  }));
   const [error, setError] = useState("");
-  const [product, setProduct] = useState({
-    name: "",
-    price: "",
-    description: "",
-  });
+
+  useEffect(() => {
+    setForm({
+      title: initialData?.title || "",
+      price: initialData?.price || "",
+      description: initialData?.description || "",
+    });
+  }, [initialData]);
 
   function handleChange(e) {
     const { name, value } = e.target;
@@ -22,8 +31,9 @@ export default function ProductForm() {
     } else if (form.description.length < 10) {
       setError("La descripción tiene que contener un minimo de 10 caracteres.");
     } else {
-      alert("Cambios realizado");
-      setForm({ name: "", price: "", description: "" });
+      onSubmit();
+      setForm({ title: "", price: "", description: "" });
+      // setMode("create");
     }
   }
 
@@ -41,9 +51,9 @@ export default function ProductForm() {
         <input
           className="product__form-input"
           type="text"
-          name="name"
+          name="title"
           id="form-product-name"
-          value={form.name}
+          value={form.title}
           onChange={handleChange}
           required
         />
@@ -76,9 +86,15 @@ export default function ProductForm() {
           required
         ></textarea>
         <button className="product__form-btn-submit" type="submit">
-          Ok
+          {mode === "create" ? "Crear producto" : "Editar producto"}
         </button>
       </form>
     </div>
   );
 }
+
+ProductForm.propTypes = {
+  initialData: PropTypes.object,
+  onSubmit: PropTypes.func.isRequired,
+  mode: PropTypes.oneOf(["create", "edit"]),
+};

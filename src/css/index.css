@@ -5,11 +5,13 @@
   --background-button-blue-2: hsl(224, 76%, 48%);
   --background-button-blue-3: hsl(217, 91%, 60%);
   --background-button-red-1: hsl(6, 83%, 95%);
+  --background-button-red-2: rgb(197, 57, 42);
   --background-red-1: hsl(0, 85%, 57%);
+  --background-gray-1: hsl(0, 0%, 96%);
   --text-white: hsl(216, 8%, 88%);
   --text-gray: hsla(0, 0%, 0%, 0.5);
   --text-red: hsl(0, 73%, 41%);
-  --boder-gray: hsl(0, 0%, 80%);
+  --border-gray: hsl(0, 0%, 80%);
   --border-red: hsl(0, 73%, 41%);
 }
 
@@ -36,10 +38,6 @@ header {
   padding: 10px;
 }
 
-.header__logo {
-  height: 60px;
-}
-
 nav {
   display: flex;
   gap: 20px;
@@ -53,6 +51,14 @@ footer {
   justify-content: space-around;
   gap: 80px;
   padding: 10px;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.header__logo {
+  height: 60px;
 }
 
 .footer__logo {
@@ -87,7 +93,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
 }
 
@@ -140,7 +146,7 @@ main {
   margin: 20px 0 0 0;
   padding: 20px;
   gap: 25px;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
 }
 
@@ -180,7 +186,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
 }
 
@@ -213,7 +219,7 @@ main {
 .login__form-input {
   height: 40px;
   margin-bottom: 20px;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
   padding-left: 5px;
 }
@@ -241,7 +247,7 @@ main {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
   padding: 15px;
 }
@@ -272,7 +278,7 @@ main {
   justify-content: space-around;
   gap: 15px;
   padding: 15px;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* sombra suave */
   border-radius: 5px;
 
@@ -299,7 +305,7 @@ main {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
   padding: 10px 0;
 }
@@ -333,7 +339,7 @@ main {
 .product__form-input {
   height: 40px;
   margin-bottom: 20px;
-  border: 1px solid var(--boder-gray);
+  border: 1px solid var(--border-gray);
   border-radius: 5px;
   padding-left: 5px;
 }
@@ -342,18 +348,59 @@ main {
   height: 40px;
 }
 
+.product-table {
+  width: 80%;
+  font-size: 0.95rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border-radius: 8px;
+  overflow: hidden;
+  margin: auto;
+}
+
+.product-table__header {
+  background-color: var(--background-gray-1);
+  font-weight: bold;
+
+  & th {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--border-gray);
+  }
+}
+
+.product-table__row {
+  & td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--border-gray);
+  }
+
+  /* :hover {
+    background-color: var(--background-gray-1);
+  } */
+}
+
+.product-table__btn {
+  width: 65px;
+  text-align: center;
+  margin: 5px 0;
+}
+
 .button--basic {
   background-color: inherit;
   border-radius: 5px;
   padding: 3px;
   border: none;
+}
 
-  :hover {
-    cursor: pointer;
-  }
+.button--basic:hover {
+  cursor: pointer;
 }
 
 .button--blue {
   color: white;
   background-color: var(--background-button-blue-1);
+}
+
+.button--red {
+  color: white;
+  background-color: var(--background-button-red-2);
 }
