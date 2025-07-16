@@ -423,13 +423,12 @@ main {
 
   nav {
     display: none;
-    height: 130px;
     position: absolute;
     top: 60px;
     right: 0;
     flex-direction: column;
     align-items: flex-end;
-    padding: 1rem;
+    padding: 1rem 1.2rem;
     margin: 0;
     background-color: var(--background-gray-1);
     border-radius: 4px;
@@ -443,11 +442,10 @@ main {
 
   .cart-container__item-count {
     top: 120px;
-    right: 0;
+    right: 7px;
   }
 
   .hamburger {
-    /* position: absolute; */
     display: block;
   }
 
@@ -461,7 +459,65 @@ main {
     width: 90%;
   }
 
+  .login__container {
+    width: 80%;
+  }
+
+  .login__form {
+    width: 70%;
+  }
+
+  .form-product__container {
+    width: 80%;
+  }
+
+  .product__form {
+    width: 70%;
+  }
+
+  .card {
+    height: 180px;
+    flex-direction: row;
+  }
+
+  .card__img {
+    height: 150px;
+  }
+
+  .card__title {
+    font-size: 0.7rem;
+    text-align: center;
+  }
+
+  .card__price {
+    font-size: 0.7rem;
+    margin: 0 auto;
+  }
+
+  .card__button {
+    font-size: 0.7rem;
+  }
+
+  .product-info__description {
+    text-align: center;
+  }
+
   .cart-container {
     width: 90%;
+  }
+
+  .cart-container__product-container {
+    & span {
+      font-size: 0.8rem;
+      min-width: 10px;
+    }
+  }
+
+  .cart-container__product-title {
+    font-size: 0.6rem;
+    flex: 1;
+  }
+
+  .product-table {
   }
 }
