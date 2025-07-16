@@ -1,9 +1,16 @@
 import { Link } from "react-router-dom";
 import { useAuth, useCart } from "../context/index";
+import { useState } from "react";
 
 export default function Header() {
   const { token } = useAuth();
   const { getTotalItems } = useCart();
+  const [open, setOpen] = useState(true);
+
+  function handleClick() {
+    setOpen((prevOpen) => !prevOpen);
+    console.log(open);
+  }
 
   return (
     <header>
@@ -14,7 +21,7 @@ export default function Header() {
           alt="Company logo"
         />
       </Link>
-      <nav>
+      <nav className={`${open ? "nav--open" : ""}`}>
         <Link to={"/"}>Home</Link>
         <Link to={"/electronics"}>Electronica</Link>
         {!token && <Link to={"/login"}>Login</Link>}
@@ -31,6 +38,10 @@ export default function Header() {
           </Link>
         </div>
       </nav>
+
+      <button className="hamburger" onClick={() => handleClick()}>
+        <i className="bi bi-list"></i>
+      </button>
     </header>
   );
 }
