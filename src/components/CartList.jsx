@@ -31,7 +31,7 @@ export default function CartList() {
               </div>
               <h5 className="cart-container__product-title">{item.title}</h5>
               <span>{item.quantity}</span>
-              <span>${item.price * item.quantity}</span>
+              <span>${Number(item.price * item.quantity).toFixed(2)}</span>
               <button
                 className="button--basic"
                 onClick={() => {

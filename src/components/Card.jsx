@@ -36,7 +36,7 @@ export default function Card(props) {
         </div>
         <div className="card__text-container">
           <h3 className="card__title">{product.title}</h3>
-          <p className="card__price">${product.price}</p>
+          <p className="card__price">${Number(product.price).toFixed(2)}</p>
           <button
             className="card__button button--basic button--blue"
             onClick={handleClick}
