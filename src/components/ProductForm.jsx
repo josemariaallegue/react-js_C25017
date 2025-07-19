@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import PropTypes from "prop-types";
+import { useProducts } from "../context/ProductsContext";
 
 export default function ProductForm(props) {
   const { initialData, onSubmit, mode } = props;
@@ -31,9 +32,19 @@ export default function ProductForm(props) {
     } else if (form.description.length < 10) {
       setError("La descripción tiene que contener un minimo de 10 caracteres.");
     } else {
-      onSubmit();
+      onSubmit({
+        id: initialData?.id || "",
+        title: form.title,
+        price: form.price,
+        description: form.description,
+        category: initialData?.category || "",
+        image: initialData?.image || "",
+        rating: {
+          rate: initialData?.rating.rate || 0,
+          count: initialData?.rating.count || 0,
+        },
+      });
       setForm({ title: "", price: "", description: "" });
-      // setMode("create");
     }
   }
 

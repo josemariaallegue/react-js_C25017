@@ -2,7 +2,7 @@ import { useProducts } from "../context/ProductsContext";
 import PropTypes from "prop-types";
 
 export default function ProductTable(props) {
-  const { onEdit } = props;
+  const { onEdit, onDelete } = props;
   const { products } = useProducts();
 
   return (
@@ -30,7 +30,10 @@ export default function ProductTable(props) {
                   >
                     Editar
                   </button>
-                  <button className="product-table__btn button--basic button--red">
+                  <button
+                    className="product-table__btn button--basic button--red"
+                    onClick={() => onDelete(String(product.id))}
+                  >
                     Eliminar
                   </button>
                 </td>

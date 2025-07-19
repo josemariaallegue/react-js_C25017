@@ -68,7 +68,7 @@ export function ProductsProvider({ children }) {
 
   async function deleteProduct(id) {
     try {
-      await fetch(
+      const res = await fetch(
         `https://686975cd2af1d945cea1f02a.mockapi.io/products/${id}`,
         {
           method: "DELETE",
@@ -77,7 +77,7 @@ export function ProductsProvider({ children }) {
 
       if (!res.ok) throw new Error(`Error al eliminar el producto.`);
 
-      setProducts((prev) => prev.filter((p) => p.id !== id));
+      setProducts((prev) => prev.filter((p) => String(p.id) !== String(id)));
     } catch (error) {
       console.error("Error al eliminar producto:", error);
     }
@@ -98,7 +98,7 @@ export function ProductsProvider({ children }) {
 
       const updatedProduct = await res.json();
       setProducts((prev) =>
-        prev.map((p) => (p.id === id ? updatedProduct : p))
+        prev.map((p) => (String(p.id) === String(id) ? updatedProduct : p))
       );
     } catch (error) {
       console.error("Error al actualizar producto:", error);
