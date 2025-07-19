@@ -1,11 +1,12 @@
 import ProductForm from "../components/ProductForm";
 import ProductTable from "../components/ProductTable";
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { toast } from "react-toastify";
 
 export default function Admin() {
   const [initialData, setInitialData] = useState(null);
   const [mode, setMode] = useState("create");
+  const miDivRef = useRef(null);
 
   function handleSubmit() {
     if (!initialData) {
@@ -24,11 +25,14 @@ export default function Admin() {
       description: product.description,
     });
     setMode("edit");
+    miDivRef.current?.scrollIntoView({ behavior: "smooth" });
   }
 
   return (
     <main>
-      <h1>Gestión de productos</h1>
+      <h1 ref={miDivRef} id="mi-h1">
+        Gestión de productos
+      </h1>
       <ProductForm
         initialData={initialData}
         onSubmit={handleSubmit}

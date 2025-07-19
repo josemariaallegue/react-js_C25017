@@ -23,7 +23,7 @@ export default function ProductTable(props) {
                 <td>{product.title}</td>
                 <td>${product.price}</td>
                 <td>{product.description}</td>
-                <td>
+                <td className="product-table__btn-section">
                   <button
                     className="product-table__btn button--basic button--blue"
                     onClick={() => onEdit(product)}

@@ -85,7 +85,10 @@ export default function ProductForm(props) {
           onChange={handleChange}
           required
         ></textarea>
-        <button className="product__form-btn-submit" type="submit">
+        <button
+          className="product__form-btn-submit button--basic button--blue"
+          type="submit"
+        >
           {mode === "create" ? "Crear producto" : "Editar producto"}
         </button>
       </form>
